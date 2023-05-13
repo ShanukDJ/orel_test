@@ -17,3 +17,5 @@ samples, guidance on mobile development, and a full API reference.
 
 
 Flutter SDK Release Version : 3.7.12
+APIs handling : Dio
+States management pattern : Bloc

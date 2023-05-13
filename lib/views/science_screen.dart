@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:orel_test/bloc/news_bloc.dart';
-import 'package:orel_test/models/common%20_model.dart';
+import 'package:orel_test/models/common_model.dart';
 import '../networks/response.dart';
 import '../widgets/list_view_header.dart';
 import '../widgets/news_list_tile.dart';

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../bloc/news_bloc.dart';
-import '../models/common _model.dart';
+import '../models/common_model.dart';
 import '../networks/response.dart';
 import '../widgets/header_bar.dart';
 import '../widgets/list_view_header.dart';

@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:orel_test/models/common%20_model.dart';
-
+import 'package:orel_test/models/common_model.dart';
 import '../interceptors/dio_logger.dart';
 import '../networks/base.dart';
 import '../networks/exception.dart';
