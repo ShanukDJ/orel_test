@@ -17,8 +17,8 @@ TextStyle? size12Style({
   double? letterSpacing = 0.0,
 }) =>
     TextStyle(
-        color: textColor ?? AppColors.colorBlack,
-        fontSize: 12.sp,
-        fontWeight: FontWeight.w600,
-        letterSpacing: letterSpacing,
+      color: textColor ?? AppColors.colorBlack,
+      fontSize: 12.sp,
+      fontWeight: FontWeight.w600,
+      letterSpacing: letterSpacing,
     );

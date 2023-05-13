@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../ui_helpers/text_styles.dart';
 
-
 class ListViewHeader extends StatelessWidget {
   const ListViewHeader({Key? key, required this.title}) : super(key: key);
 

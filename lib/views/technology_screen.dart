@@ -1,39 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:orel_test/bloc/science_news_bloc.dart';
-import 'package:orel_test/models/common%20_model.dart';
-import 'package:orel_test/widgets/header_bar.dart';
-import '../networking/response.dart';
-import '../repositories/science_news_repository.dart';
-import '../ui_helpers/colors.dart';
-import '../ui_helpers/text_styles.dart';
+import '../bloc/news_bloc.dart';
+import '../models/common _model.dart';
+import '../networks/response.dart';
+import '../widgets/header_bar.dart';
 import '../widgets/list_view_header.dart';
 import '../widgets/news_list_tile.dart';
 
-class ScienceScreen extends StatefulWidget {
-  const ScienceScreen({Key? key}) : super(key: key);
+class TechnologyScreen extends StatefulWidget {
+  const TechnologyScreen({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _QualificationsScreenState();
 }
 
-class _QualificationsScreenState extends State<ScienceScreen> {
-  // FacilitiesRepository facilitiesRepository = FacilitiesRepository();
+class _QualificationsScreenState extends State<TechnologyScreen> {
   late NewsBloc _bloc;
   late ScrollController _scrollController;
 
   @override
   void initState() {
-    super.initState();
     _bloc = NewsBloc();
+    super.initState();
     _scrollController = ScrollController();
-    _bloc.newsBloc("science");
+    _bloc.newsBloc("technology");
   }
 
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
-    return _bodyContent();
+    return Scaffold(
+      primary: true,
+      body: Stack(
+        children: [
+          //heading bar with title
+          const HeaderBar(),
+          //list view integration
+          _bodyContent()
+        ],
+      ),
+    );
   }
 
   Widget _bodyContent() {
@@ -54,7 +60,7 @@ class _QualificationsScreenState extends State<ScienceScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const ListViewHeader(title: 'Science'),
+              const ListViewHeader(title: 'Technology'),
               Expanded(
                 child: Stack(children: [
                   Positioned(
@@ -97,9 +103,6 @@ class _QualificationsScreenState extends State<ScienceScreen> {
                   ),
                 ]),
               ),
-              SizedBox(
-                height: 4.h,
-              ),
             ],
           ),
         ),
@@ -109,7 +112,6 @@ class _QualificationsScreenState extends State<ScienceScreen> {
 
   @override
   void dispose() {
-    // Clean up the controller when the Widget is removed from the Widget tree
     _scrollController.dispose();
     super.dispose();
   }

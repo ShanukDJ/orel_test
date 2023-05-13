@@ -9,6 +9,7 @@ class AppNetworkImageView extends StatelessWidget {
   final BoxFit? fit;
   final BoxShape? shape;
   final BorderRadius? borderRadius;
+
   const AppNetworkImageView({
     Key? key,
     this.url,
@@ -23,7 +24,8 @@ class AppNetworkImageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
-      imageUrl: url ?? 'https://avatars.dicebear.com/api/initials/${meta ?? "OrelTest"}.png',
+      imageUrl: url ??
+          'https://avatars.dicebear.com/api/initials/${meta ?? "OrelTest"}.png',
       fit: fit,
       imageBuilder: (context, imageProvider) {
         return Container(
@@ -31,9 +33,7 @@ class AppNetworkImageView extends StatelessWidget {
           height: height,
           padding: const EdgeInsets.all(4),
           decoration: BoxDecoration(
-            border: Border.all(
-              color: Colors.green
-            ),
+            border: Border.all(color: Colors.green),
             shape: shape ?? BoxShape.circle,
             borderRadius: shape != BoxShape.circle ? borderRadius : null,
             color: Theme.of(context).colorScheme.surface,

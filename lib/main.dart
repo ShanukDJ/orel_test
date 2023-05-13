@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:orel_test/screens/science_screen.dart';
 import 'package:orel_test/widgets/bottom_bar.dart';
 
-void main() {
+import 'other/app_configuration.dart';
+
+Future<void> main() async {
+  await AppConfiguration.initialize('dev');
   runApp(const MyApp());
 }
 
@@ -14,12 +16,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+      theme: ThemeData(),
+      home: const BottomNavigation(
+        currentIndex: 0,
       ),
-      home: const BottomNavigation(currentIndex: 0,),
     );
   }
 }
-
-

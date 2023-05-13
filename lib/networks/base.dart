@@ -21,6 +21,7 @@ abstract class BaseApi {
       ..interceptors.addAll(interceptors);
   }
 
+  // dio base get method calling
   Future<Response<Map<String, dynamic>>> get(String path,
       {Map<String, dynamic>? queryParameters,
       Map<String, dynamic>? headers}) async {

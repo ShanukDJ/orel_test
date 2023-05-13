@@ -1,53 +1,34 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../bloc/science_news_bloc.dart';
-import '../models/common _model.dart';
-import '../networking/response.dart';
-import '../ui_helpers/colors.dart';
-import '../ui_helpers/text_styles.dart';
-import '../widgets/app_image.dart';
-import '../widgets/header_bar.dart';
+import 'package:orel_test/bloc/news_bloc.dart';
+import 'package:orel_test/models/common%20_model.dart';
+import '../networks/response.dart';
 import '../widgets/list_view_header.dart';
 import '../widgets/news_list_tile.dart';
 
-class BusinessScreen extends StatefulWidget {
-  const BusinessScreen({Key? key}) : super(key: key);
+class ScienceScreen extends StatefulWidget {
+  const ScienceScreen({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _QualificationsScreenState();
 }
 
-class _QualificationsScreenState extends State<BusinessScreen> {
+class _QualificationsScreenState extends State<ScienceScreen> {
   late NewsBloc _bloc;
   late ScrollController _scrollController;
-  int? nextPage;
-  bool all = true;
 
   @override
   void initState() {
-    // WidgetsBinding.instance.addPostFrameCallback((timeStamp) => getData());
-    _bloc = NewsBloc();
     super.initState();
+    _bloc = NewsBloc();
     _scrollController = ScrollController();
-    _bloc.newsBloc("business");
+    _bloc.newsBloc("science");
   }
 
   @override
   Widget build(BuildContext context) {
     ScreenUtil.init(context);
-    return Scaffold(
-      primary: true,
-      body: Stack(
-        children: [
-          //heading bar with title
-          const HeaderBar(),
-          //list view integration
-          _bodyContent()
-        ],
-      ),
-    );
+    return _bodyContent();
   }
 
   Widget _bodyContent() {
@@ -68,9 +49,7 @@ class _QualificationsScreenState extends State<BusinessScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const ListViewHeader(title: 'Business'),
-
-//data assigning inside the stream builder
+              const ListViewHeader(title: 'Science'),
               Expanded(
                 child: Stack(children: [
                   Positioned(
@@ -85,7 +64,9 @@ class _QualificationsScreenState extends State<BusinessScreen> {
                             case Status.COMPLETED:
                               return ListView.separated(
                                 padding: EdgeInsets.symmetric(vertical: 22.h),
-                                itemCount: snapshot.data!.data!.data!.length,
+                                itemCount: snapshot.data!.data == null
+                                    ? 0
+                                    : snapshot.data!.data!.data!.length,
                                 controller: _scrollController,
                                 scrollDirection: Axis.vertical,
                                 shrinkWrap: true,
@@ -113,6 +94,9 @@ class _QualificationsScreenState extends State<BusinessScreen> {
                   ),
                 ]),
               ),
+              SizedBox(
+                height: 4.h,
+              ),
             ],
           ),
         ),
@@ -122,6 +106,7 @@ class _QualificationsScreenState extends State<BusinessScreen> {
 
   @override
   void dispose() {
+    // Clean up the controller when the Widget is removed from the Widget tree
     _scrollController.dispose();
     super.dispose();
   }

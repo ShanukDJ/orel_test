@@ -1,12 +1,9 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:orel_test/screens/business_screen.dart';
-import 'package:orel_test/screens/science_screen.dart';
 import 'package:orel_test/ui_helpers/colors.dart';
 import 'package:flutter/material.dart';
-
-import '../screens/technology_screen.dart';
+import '../views/business_screen.dart';
+import '../views/science_screen.dart';
+import '../views/technology_screen.dart';
 import 'header_bar.dart';
 
 class BottomNavigation extends StatefulWidget {
@@ -42,7 +39,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
         children: [
           //heading bar with title
           const HeaderBar(),
-          //bottom bar screens
+          //bottom bar views
           Container(
             child: _widgetOptions.elementAt(barIndex!),
           ),

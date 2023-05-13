@@ -1,8 +1,6 @@
-
+//exceptions handling class
 
 import 'package:dio/dio.dart';
-
-import '../models/other.dart';
 
 ApiResponseData<T?> onDioError<T>(DioError e) {
   if (e.response != null) {
@@ -41,5 +39,3 @@ class ApiResponseData<T> {
     this.data,
   });
 }
-
-

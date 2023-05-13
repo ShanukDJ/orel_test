@@ -18,7 +18,7 @@ class AppConfiguration {
   }
 
 
-  ///base URL
+  //base URL
   static Uri get _apiEndpointLive => Uri(
     scheme: 'https',
     host: 'inshorts.deta.dev',
@@ -30,7 +30,7 @@ class AppConfiguration {
   );
 
 
-  ///this will return current version api end point uri
+  //this will return current version api end point uri
   Uri get apiEndpoint {
     switch (_appEnv) {
       case ("prod"):

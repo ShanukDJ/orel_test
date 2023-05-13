@@ -1,37 +1,30 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../bloc/science_news_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import '../bloc/news_bloc.dart';
 import '../models/common _model.dart';
-import '../networking/response.dart';
-import '../ui_helpers/colors.dart';
-import '../ui_helpers/text_styles.dart';
-import '../widgets/app_image.dart';
+import '../networks/response.dart';
 import '../widgets/header_bar.dart';
 import '../widgets/list_view_header.dart';
 import '../widgets/news_list_tile.dart';
 
-class TechnologyScreen extends StatefulWidget {
-  const TechnologyScreen({Key? key}) : super(key: key);
+class BusinessScreen extends StatefulWidget {
+  const BusinessScreen({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _QualificationsScreenState();
 }
 
-class _QualificationsScreenState extends State<TechnologyScreen> {
-
+class _QualificationsScreenState extends State<BusinessScreen> {
   late NewsBloc _bloc;
   late ScrollController _scrollController;
-  int? nextPage;
-  bool all = true;
 
   @override
   void initState() {
     _bloc = NewsBloc();
     super.initState();
     _scrollController = ScrollController();
-    _bloc.newsBloc("technology");
+    _bloc.newsBloc("business");
   }
 
   @override
@@ -68,7 +61,9 @@ class _QualificationsScreenState extends State<TechnologyScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const ListViewHeader(title: 'Technology'),
+              const ListViewHeader(title: 'Business'),
+
+              //data assigning inside the stream builder
               Expanded(
                 child: Stack(children: [
                   Positioned(
@@ -100,6 +95,14 @@ class _QualificationsScreenState extends State<TechnologyScreen> {
                                 },
                               );
                             case Status.ERROR:
+                              Fluttertoast.showToast(
+                                  msg:
+                                      "Something went wrong! Please try again..",
+                                  toastLength: Toast.LENGTH_SHORT,
+                                  gravity: ToastGravity.BOTTOM,
+                                  backgroundColor: Colors.black,
+                                  textColor: Colors.white,
+                                  fontSize: 12.0);
                               break;
                             default:
                               break;

@@ -1,4 +1,4 @@
-//statues handling with bloc pattern
+//statuses handling with bloc pattern
 
 class Response<T> {
   Status? status;
@@ -6,7 +6,9 @@ class Response<T> {
   String? message;
 
   Response.loading(this.message) : status = Status.LOADING;
+
   Response.completed(this.data) : status = Status.COMPLETED;
+
   Response.error(this.message) : status = Status.ERROR;
 
   Response.fromJson(x);
@@ -23,7 +25,9 @@ class ResponseList<T> {
   String? message;
 
   ResponseList.loading(this.message) : status = Status.LOADING;
+
   ResponseList.completed(this.data) : status = Status.COMPLETED;
+
   ResponseList.error(this.message) : status = Status.ERROR;
 
   ResponseList.fromJson(x);
@@ -40,7 +44,9 @@ class ResponseNestedList<T> {
   String? message;
 
   ResponseNestedList.loading(this.message) : status = Status.LOADING;
+
   ResponseNestedList.completed(this.data) : status = Status.COMPLETED;
+
   ResponseNestedList.error(this.message) : status = Status.ERROR;
 
   ResponseNestedList.fromJson(x);
@@ -52,5 +58,3 @@ class ResponseNestedList<T> {
 }
 
 enum Status { LOADING, COMPLETED, ERROR }
-
-

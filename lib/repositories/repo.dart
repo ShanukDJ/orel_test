@@ -2,19 +2,20 @@ import 'package:dio/dio.dart';
 import 'package:orel_test/models/common%20_model.dart';
 
 import '../interceptors/dio_logger.dart';
-import '../models/other.dart';
-import '../networks(EM)/base.dart';
-import '../networks(EM)/exception.dart';
+import '../networks/base.dart';
+import '../networks/exception.dart';
 
 
-class ChallengesRepo extends BaseApi {
-  ChallengesRepo()
+class NewsRepository extends BaseApi {
+  NewsRepository()
       : super(interceptors: [
     QueuedInterceptor(),
     PrettyDioLogger()
   ]);
 
-  Future<ApiResponseData<CommonModel?>> getNews(
+
+  //parameters assigning and error handling with API call
+  Future<dynamic> getNews(
       String category) async {
     try {
       Response response = await get('/news', queryParameters: {
@@ -23,9 +24,6 @@ class ChallengesRepo extends BaseApi {
       CommonModel newsResponse =
       CommonModel.fromJson(response.data);
       if (newsResponse.success != null && newsResponse.success!) {
-        print("data::::::");
-        print(newsResponse.data);
-        print(newsResponse.success);
         return ApiResponseData<CommonModel?>(
           success: true,
           category: newsResponse.category!,
