@@ -4,7 +4,7 @@ import 'dart:async';
 import 'package:orel_test/models/common_model.dart';
 import '../networks/exception.dart';
 import '../networks/response.dart';
-import '../repositories/repo.dart';
+import '../repositories/news_repository.dart';
 
 class NewsBloc {
 
